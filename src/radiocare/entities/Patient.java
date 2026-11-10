@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Patient {
-    private int cin;
+    private String cin;
     private String nom;
     private String prenom;
     private LocalDate DateNaissance;
@@ -15,7 +15,7 @@ public class Patient {
     private double SoldeCompte;
     private final List<String> historiqueExamensIds;
 
-    public Patient(int cin, String nom, String prenom, LocalDate DateNaissance, int Telephone, String Email, int NumAssurance, double SoldeCompte, String[] HistoriqueExamenIDs) {
+    public Patient(String cin, String nom, String prenom, LocalDate DateNaissance, int Telephone, String Email, int NumAssurance, double SoldeCompte, String[] HistoriqueExamenIDs) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -27,11 +27,15 @@ public class Patient {
         this.historiqueExamensIds = new ArrayList<>();
     }
 
-    public int getCin() {
+    public Patient() {
+        this.historiqueExamensIds = null;
+    }
+
+    public String getCin() {
         return this.cin;
     }
 
-    public void setCin(int cin) {
+    public void setCin(String cin) {
         this.cin = cin;
     }
 

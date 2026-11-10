@@ -11,9 +11,8 @@ public class PatientUI {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("CIN:");
-        int cin = sc.nextInt();
-        sc.nextLine();
-
+        String cin = sc.nextLine();
+        
         System.out.println("Nom:");
         String nom = sc.nextLine(); 
 
@@ -21,21 +20,21 @@ public class PatientUI {
         String prenom = sc.nextLine(); 
 
         System.out.println("Date de naissance:");
-        System.out.println("Jour");
+        System.out.println("Jour:");
         int jour = sc.nextInt();
         sc.nextLine();
 
-        System.out.println("Mois");
+        System.out.println("Mois:");
         int mois = sc.nextInt();
         sc.nextLine();
 
-        System.out.println("Annee");
+        System.out.println("Annee:");
         int annee = sc.nextInt();
         sc.nextLine();
 
         LocalDate date = LocalDate.of(annee, mois, jour);
 
-        System.out.println("Telephone");
+        System.out.println("Telephone:");
         int telephone = sc.nextInt();
         sc.nextLine();
 
@@ -52,6 +51,18 @@ public class PatientUI {
 
         sc.close();
         Patient p = new Patient(cin, nom, prenom, date, telephone, email, numA, solde, null);
+        System.out.println("=========================================");
         return p;
+    }
+    public static void PatientProprietes(Patient p) {
+        System.out.println("==========Proprietes du patient==========");
+        System.out.println("> Nom: "+p.getNom());
+        System.out.println("> Prenom: "+p.getPrenom());
+        System.out.println("> CIN: "+p.getCin());
+        System.out.println("> Date de Naissance: "+p.getDateNaissance());
+        System.out.println("> Email: "+p.getEmail());
+        System.out.println("> Telephone: "+p.getTelephone());
+        System.out.println("> N° Assurance: "+p.getNumAssurance());
+        System.out.println("> Solde: "+p.getSoldeCompte()+" £");
     }
 }

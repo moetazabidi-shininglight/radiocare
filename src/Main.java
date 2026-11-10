@@ -1,7 +1,10 @@
+import radiocare.controllers.PatientController;
+import radiocare.entities.Patient;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world?");
-        System.out.println("I am guest.");
-        System.out.println("I am host.");
+        PatientController p = new PatientController();
+        //p.init();
+        PatientProprietes();
     }
 }

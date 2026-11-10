@@ -3,7 +3,20 @@ import radiocare.entities.*;
 import radiocare.repositories.PatientDAO;
 
 public class PatientService {
-    private PatientDAO pDAO = new PatientDAO();
+    private PatientDAO dao = new PatientDAO();
+    public PatientService(PatientDAO dao) {
+        this.dao = dao;
+    }
+    public Patient consulter(String CIN) {
+        try{
+
+        }catch () {
+            
+        }
+    }
+    public void creerPatient() {
+
+    }
     public void enregistrerPaiement(Patient p, double montant) {
         p.crediter(montant);
         pDAO.save(p);

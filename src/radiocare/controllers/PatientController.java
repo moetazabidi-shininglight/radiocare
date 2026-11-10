@@ -6,5 +6,8 @@ public class PatientController {
     public void init(){
         Patient p = PatientUI.saisirPatient();
     }
+    public void proprietes(Patient p) {
+        PatientUI.PatientProprietes(p);
+    }
     
 }
