@@ -1,0 +1,13 @@
+[
+  {
+    "cinMatricule": 4,
+    "nom": 4,
+    "prenom": 4,
+    "dateNaissance": 0004-04-04,
+    "telephone": 4,
+    "email": 4,
+    "numAssurance": 4,
+    "soldeCompte": 4.0,
+    "historiqueExamensIds": []
+  }
+]

@@ -1,6 +1,7 @@
 package radiocare.presentation;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 import radiocare.entities.Patient;
@@ -35,15 +36,13 @@ public class PatientUI {
         LocalDate date = LocalDate.of(annee, mois, jour);
 
         System.out.println("Telephone:");
-        int telephone = sc.nextInt();
-        sc.nextLine();
+        String telephone = sc.nextLine();
 
         System.out.println("Email:");
         String email = sc.nextLine(); 
 
         System.out.println("Numero d'assurance:");
-        int numA = sc.nextInt();
-        sc.nextLine();
+        String numA = sc.nextLine();
 
         System.out.println("Solde du Compte:");
         double solde = sc.nextDouble();
@@ -65,4 +64,5 @@ public class PatientUI {
         System.out.println("> N° Assurance: "+p.getNumAssurance());
         System.out.println("> Solde: "+p.getSoldeCompte()+" £");
     }
+    
 }

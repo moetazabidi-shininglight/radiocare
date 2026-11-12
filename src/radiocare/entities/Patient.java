@@ -9,13 +9,13 @@ public class Patient {
     private String nom;
     private String prenom;
     private LocalDate DateNaissance;
-    private int Telephone;
+    private String Telephone;
     private String Email;
-    private int NumAssurance;
+    private String NumAssurance;
     private double SoldeCompte;
     private final List<String> historiqueExamensIds;
 
-    public Patient(String cin, String nom, String prenom, LocalDate DateNaissance, int Telephone, String Email, int NumAssurance, double SoldeCompte, String[] HistoriqueExamenIDs) {
+    public Patient(String cin, String nom, String prenom, LocalDate DateNaissance, String Telephone, String Email, String NumAssurance, double SoldeCompte, String[] HistoriqueExamenIDs) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -25,10 +25,6 @@ public class Patient {
         this.NumAssurance = NumAssurance;
         this.SoldeCompte = SoldeCompte;
         this.historiqueExamensIds = new ArrayList<>();
-    }
-
-    public Patient() {
-        this.historiqueExamensIds = null;
     }
 
     public String getCin() {
@@ -63,11 +59,11 @@ public class Patient {
         this.DateNaissance = DateNaissance;
     }
 
-    public int getTelephone() {
+    public String getTelephone() {
         return this.Telephone;
     }
 
-    public void setTelephone(int Telephone) {
+    public void setTelephone(String Telephone) {
         this.Telephone = Telephone;
     }
 
@@ -79,11 +75,11 @@ public class Patient {
         this.Email = Email;
     }
 
-    public int getNumAssurance() {
+    public String getNumAssurance() {
         return this.NumAssurance;
     }
 
-    public void setNumAssurance(int NumAssurance) {
+    public void setNumAssurance(String NumAssurance) {
         this.NumAssurance = NumAssurance;
     }
 
@@ -101,15 +97,17 @@ public class Patient {
         }
     }
 
-    public void crediter(double montant) {
-        if (SoldeCompte + montant > 0) {
-            SoldeCompte+=montant;
+    public void crediter(double solde) {
+        if (SoldeCompte + solde > 0) {
+            SoldeCompte+=solde;
         }
     }
 
     public void AjouterExamenID(String id) {
         historiqueExamensIds.add(Objects.requireNonNull(id));
     }
-
+    public List<String> getHistoriqueExamensIds() {
+        return this.historiqueExamensIds;
+    }
 
 }
