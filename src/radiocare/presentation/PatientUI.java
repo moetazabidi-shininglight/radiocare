@@ -1,7 +1,6 @@
 package radiocare.presentation;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
 import radiocare.entities.Patient;

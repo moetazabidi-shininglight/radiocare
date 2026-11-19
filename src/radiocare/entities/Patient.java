@@ -2,7 +2,10 @@ package radiocare.entities;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Patient {
     private String cin;
@@ -13,7 +16,11 @@ public class Patient {
     private String Email;
     private String NumAssurance;
     private double SoldeCompte;
-    private final List<String> historiqueExamensIds;
+    private List<String> historiqueExamensIds;
+
+    public Patient() {
+        this.historiqueExamensIds = null;
+    }
 
     public Patient(String cin, String nom, String prenom, LocalDate DateNaissance, String Telephone, String Email, String NumAssurance, double SoldeCompte, String[] HistoriqueExamenIDs) {
         this.cin = cin;
@@ -24,7 +31,7 @@ public class Patient {
         this.Email = Email;
         this.NumAssurance = NumAssurance;
         this.SoldeCompte = SoldeCompte;
-        this.historiqueExamensIds = new ArrayList<>();
+        this.historiqueExamensIds = new ArrayList<String>();
     }
 
     public String getCin() {
@@ -103,11 +110,44 @@ public class Patient {
         }
     }
 
-    public void AjouterExamenID(String id) {
-        historiqueExamensIds.add(Objects.requireNonNull(id));
+    public void setHistoriqueExamenID(List<String> examen_ids) {
+        this.historiqueExamensIds = null;
+        for (String id : examen_ids) {
+            this.historiqueExamensIds.add(id);
+        }
     }
     public List<String> getHistoriqueExamensIds() {
         return this.historiqueExamensIds;
     }
-
+    
+    public JSONObject toJson() throws JSONException{
+        JSONObject o =new JSONObject();
+        o.put("CIN:", cin);
+        o.put("Nom:", nom);
+        o.put("Prenom:", prenom);
+        o.put("DateNaissance:", DateNaissance);
+        o.put("Telephone:", Telephone);
+        o.put("Email:", Email);
+        o.put("NumAsurance:", NumAssurance);
+        o.put("SoldeCompte:", SoldeCompte);
+        JSONArray examens = new JSONArray();
+        for (String id : historiqueExamensIds) {
+            examens.put(id);
+        }
+        o.put("HistoriqueExamensIds:", examens);
+        return o;
+    }
+    public static Patient fromJson(JSONObject o) throws JSONException{
+        Patient p = new Patient();
+        p.setCin(o.getString("CIN:"));
+        p.setNom(o.getString("Nom:"));
+        p.setPrenom(o.getString("Prenom:"));
+        p.setDateNaissance((LocalDate)o.get("DateNaissance:"));
+        p.setTelephone(o.getString("Telephone:"));
+        p.setEmail(o.getString("Email:"));
+        p.setNumAssurance(o.getString("NumAssurance:"));
+        p.setSoldeCompte(o.getDouble("SoldeCompte:"));
+        p.setHistoriqueExamenID((List<String>)o.get("HistoriqueExamensIds:"));
+        return p;
+}
 }
